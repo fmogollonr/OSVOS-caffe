@@ -175,6 +175,7 @@ INCLUDE_DIRS += $(BUILD_INCLUDE_DIR) ./src ./include
 ifneq ($(CPU_ONLY), 1)
 	INCLUDE_DIRS += $(CUDA_INCLUDE_DIR)
 	LIBRARY_DIRS += $(CUDA_LIB_DIR)
+	LIBRARY_DIRS += /usr/lib/x86_64-linux-gnu/hdf5/serial/
 	LIBRARIES := cudart cublas curand
 endif
 
@@ -405,6 +406,11 @@ INCLUDE_DIRS += $(BLAS_INCLUDE)
 LIBRARY_DIRS += $(BLAS_LIB)
 
 LIBRARY_DIRS += $(LIB_BUILD_DIR)
+HDF5_INCLUDE=/usr/include/hdf5/serial/
+PYTHON_INCLUDE=/usr/include/python2.7/
+INCLUDE_DIRS += $(HDF5_INCLUDE)
+INCLUDE_DIRS += $(PYTHON_INCLUDE)
+
 
 # Automatic dependency generation (nvcc is handled separately)
 CXXFLAGS += -MMD -MP
